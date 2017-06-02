@@ -1,0 +1,17 @@
+version: '2.0'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    volumes:
+      - .:/code
+    command: bash start.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - HOST_GLOBAL=127.0.0.1
