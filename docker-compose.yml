@@ -9,9 +9,12 @@ services:
     volumes:
       - .:/code
     command: bash start.sh
+    # command: python manage.py runserver 0.0.0.0:8000
     ports:
-      - "8000:8000"
+      - "80:8000"
     depends_on:
       - db
     environment:
       - HOST_GLOBAL=127.0.0.1
+      - DELAY=5
+      - POSTGRES_HOST_PRIVATE=db
